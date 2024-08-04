@@ -1,9 +1,12 @@
 const {Router}=require('express')
+const { signup, login } = require('../../controllers/user/userController')
 
 const userRouter=Router()
 
-userRouter.get("/",(req,res)=>{
-    res.json({msg:"Heelo Welcome"})
+userRouter.post("/signup",signup)
+userRouter.post("/login",login)
+userRouter.get("/signup",(req,res)=>{
+    res.send({msg:"hello"})
 })
 
 
