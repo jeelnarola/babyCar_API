@@ -1,4 +1,3 @@
-// const UserSingup = require("../../models/userModels")
 const bcrypt=require("bcrypt")
 const UserSingup = require("../../models/userModel")
 const signup=async(req,res)=>{
@@ -37,13 +36,13 @@ const login=async(req,res)=>{
                     console.log(err)
                 }
                 if (done){
-                    res.status(200).send({msg:"Login SuccsessFull...",data:data})
+                    res.status(200).json({msg:"Login SuccsessFull...",data:data})
                 }else{
-                    res.status(200).send({msg:"Wrong Password"})
+                    res.status(200).json({msg:"Wrong Password"})
                 }
             })
         }else{
-            res.status(200).send({msg:"User Not Extis..."})
+            res.status(200).json({msg:"User Not Extis..."})
         }
     }catch(err){
         console.log(err)

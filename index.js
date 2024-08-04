@@ -10,9 +10,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cors())
 app.use(router)
-app.get("/",(req,res)=>{
-    res.json({msg:"hello"})
-})
 
 app.listen(8090,()=>{
     console.log("Server Start...")
