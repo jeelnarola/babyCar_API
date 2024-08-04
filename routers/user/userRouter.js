@@ -5,8 +5,8 @@ const userRouter=Router()
 
 userRouter.post("/signup",signup)
 userRouter.post("/login",login)
-userRouter.get("/signup",(req,res)=>{
-    res.send({msg:"hello"})
+userRouter.get("/s",(req,res)=>{
+    res.json({msg:"hello"})
 })
 
 
