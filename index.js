@@ -3,7 +3,7 @@ const cors=require("cors")
 const database = require('./configs/db')
 const router = require('./routers/router')
 const proRouter = require('./routers/product/productRouter')
-
+require('dotenv').config()
 const app=express()
 
 
@@ -13,7 +13,7 @@ app.use(cors())
 app.use(proRouter)
 app.use(router)
 
-app.listen(8090,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("Server Start...")
     database()
 })

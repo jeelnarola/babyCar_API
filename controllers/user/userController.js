@@ -2,14 +2,14 @@ const bcrypt=require("bcrypt")
 const UserSingup = require("../../models/userModel")
 const signup=async(req,res)=>{
     try{
-        let {username,email,passwrod,role}=req.body
-        conole.log(req.body)
+        let {username,email,password,role}=req.body
         let data = await UserSingup.findOne({email:email})
-        if (data || data != null){
+        console.log(data)
+        if (data){
             res.status(200).json({msg:"already Account Extis"})
         }
         else{
-            bcrypt.hash(passwrod,5,async(err,done)=>{
+            bcrypt.hash(password,5,async(err,done)=>{
                 if(err){
                     console.log(err)
                 }
@@ -28,10 +28,11 @@ const signup=async(req,res)=>{
 
 const login=async(req,res)=>{
     try{
-        let {email,passwrod}=req.body
+        let {email,password}=req.body
         let data=await UserSingup.findOne({email:email})
+        // console.log(data)
         if (data){
-            bcrypt.compare(passwrod,data.password,(err,done)=>{
+            bcrypt.compare(password,data.password,(err,done)=>{
                 if(err){
                     console.log(err)
                 }
