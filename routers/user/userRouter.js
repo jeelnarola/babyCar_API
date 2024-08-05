@@ -5,9 +5,9 @@ const userRouter=Router()
 
 userRouter.post("/signup",signup)
 userRouter.post("/login",login)
-// userRouter.get("/home",(req,res)=>{
-//     res.json({msg:"hello Home"})
-// })
+userRouter.get("/home",(req,res)=>{
+    res.json({msg:"hello Home"})
+})
 
 
 module.exports=userRouter

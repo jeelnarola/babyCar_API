@@ -3,7 +3,7 @@ const UserSingup = require("../../models/userModel")
 const signup=async(req,res)=>{
     try{
         let {username,email,passwrod,role}=req.body
-
+        conole.log(req.body)
         let data = await UserSingup.findOne({email:email})
         if (data || data != null){
             res.status(200).json({msg:"already Account Extis"})
