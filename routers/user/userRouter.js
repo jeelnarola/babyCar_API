@@ -9,5 +9,9 @@ userRouter.get("/home",(req,res)=>{
     res.json({msg:"hello Home"})
 })
 
+userRouter.get("/home2",(req,res)=>{
+    res.json({msg:"hello Home2"})
+})
+
 
 module.exports=userRouter
