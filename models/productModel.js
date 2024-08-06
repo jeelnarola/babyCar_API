@@ -7,6 +7,6 @@ const ProductSchema=new mongoose.Schema({
     description:String
 })
 
-const productAdd=mongoose.model("Product-List",ProductSchema)
+const productAdd=mongoose.model("Product",ProductSchema)
 
 module.exports=productAdd

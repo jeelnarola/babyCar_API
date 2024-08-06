@@ -1,4 +1,4 @@
-const cartmodel = require("../../models/cart")
+const cartModel = require("../../models/cart")
 const productAdd = require("../../models/productModel")
 
 const productAddUser=async(req,res)=>{
@@ -31,10 +31,10 @@ const productShow=async(req,res)=>{
 
 const ProductCart=async(req,res)=>{
     try{
-        let {productId,userId}=req.body
-        let data=await cartmodel.findOne({userId,productId})
+        let {productId,userId,qyt}=req.body
+        let data=await cartModel.findOne({userId,productId})
         if(!data){
-            let data=await cartmodel.create({userId,productId})
+            let data=await cartModel.create({userId,productId,qyt})
             res.status(200).json({msg:"add to cart"})
         }
         console.log(data)
@@ -45,7 +45,13 @@ const ProductCart=async(req,res)=>{
 }
 
 const cartShow=async(req,res)=>{
-
+    try{
+        let {userId}=req.body
+        let data=await cartModel.find({userId:userId}).populate("productId")
+        res.status(200).json({msg:"Show All Product.",data:data})
+        }catch(error){
+            console.log("CartData",error)
+        }
 }
 
 module.exports={productAddUser,productShow,ProductCart,cartShow}
